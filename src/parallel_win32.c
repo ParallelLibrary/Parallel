@@ -2,8 +2,14 @@
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-void ParallelWindowWin32(ParallelWindow* window)
+int ParallelWin32(ParallelWindow* window)
 {
+    DWORD style = CS_VREDRAW | CS_HREDRAW | CS_OWNDC;
+    int x, y;
+    int w, h;
+
+    ParallelWindowAdjustWin32Rect(window, style, x, y, w, h, 0);
+
     WNDCLASSEXW wc = {};
     wc.cbSize = sizeof(WNDCLASSEXW);
     wc.style = CS_VREDRAW | CS_HREDRAW | CS_OWNDC;
@@ -24,16 +30,16 @@ void ParallelWindowWin32(ParallelWindow* window)
                                    WS_OVERLAPPEDWINDOW,
                                    CW_USEDEFAULT,
                                    CW_USEDEFAULT,
-                                   window->width,
-                                   window->height,
+                                   window->w,
+                                   window->h,
                                    0,
                                    0,
                                    0,
                                    0);
     ShowWindow(window->hwnd, SW_SHOW);
-};
+}
 
-void ParallelWindowWin32Events(ParallelWindow* window)
+void ParallelWin32Events(ParallelWindow* window)
 {
     MSG msg = {};
     while(PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE))
@@ -41,25 +47,17 @@ void ParallelWindowWin32Events(ParallelWindow* window)
     TranslateMessage(&msg);
     DispatchMessageW(&msg);
     }
-};
+}
 
-void ParallelWindowDestroyWindowWin32(ParallelWindow* window)
+void ParallelAdjustWin32Rect(ParallelWindow* window, DWORD style, int x, int y, int w, int h, UINT flags)
 {
-    if(window->next)
-    {
-        window->next->prev = window->prev;
-    }
+    RECT rect = {0, 0, window->w, window->h};
+    x = window->x + rect.left;
+    y = window->y + rect.top;
+    window->w = rect.right - rect.left;
+    window->h = rect.bottom - rect.top;
+}
 
-    if (window->prev)
-    {
-        window->prev->next = window->next;
-        window->windowdata = window->next;
-    }
-
-    free(window);
-};
-
-/* May go for thunk later on */
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
   switch (uMsg)
@@ -71,6 +69,4 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
      return DefWindowProc(hwnd, uMsg, wParam, lParam);
   }
   return 0;
-};
-
-
+}
