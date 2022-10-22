@@ -1,11 +1,11 @@
 #include "parallel.h"
 
-int Parallel_Main()
+int ParallelMain(void)
 {
-    ParallelWindow* window;
+    return 0;
 }
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nShowCmd)
 {
-return Parallel_Main;
+return ParallelMain();
 }

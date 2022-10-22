@@ -8,7 +8,7 @@ int ParallelWin32(ParallelWindow* window)
     int x, y;
     int w, h;
 
-    ParallelWindowAdjustWin32Rect(window, style, x, y, w, h, 0);
+    ParallelAdjustWin32Rect(window, style, x, y, w, h, 0);
 
     WNDCLASSEXW wc = {};
     wc.cbSize = sizeof(WNDCLASSEXW);
@@ -37,6 +37,8 @@ int ParallelWin32(ParallelWindow* window)
                                    0,
                                    0);
     ShowWindow(window->hwnd, SW_SHOW);
+
+    return 0;
 }
 
 void ParallelWin32Events(ParallelWindow* window)
