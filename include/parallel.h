@@ -12,6 +12,8 @@ typedef struct ParallelWindow ParallelWindow;
 
 typedef struct ParallelDevice ParallelDevice;
 
+typedef union ParallelEvent ParallelEvent;
+
 struct ParallelWindow
 {
  HINSTANCE hInstance;
@@ -51,10 +53,13 @@ void ParallelWin32Events(ParallelWindow* window);
 void ParallelAdjustWin32Rect(ParallelWindow* window, DWORD style, int x, int y, int w, int h, UINT flags);
 
 /* Win32 Main */
-int Parallel_Main();
+int ParallelMain(void);
 
 /* ParallelWindow Initialize */
 void ParallelInit(UINT flags);
+
+/* Poll Events */
+int ParallelPollEvent(ParallelEvent* event);
 
 
 
