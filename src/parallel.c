@@ -1,6 +1,6 @@
 #include "parallel.h"
 
-#define PARALLEL_INIT_VIDEO 011
+#define PARALLEL_INIT_VIDEO
 
 void ParallelInit(UINT flags)
 {
