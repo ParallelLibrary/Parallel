@@ -61,6 +61,11 @@ void ParallelInit(UINT flags);
 /* Poll Events */
 int ParallelPollEvent(ParallelEvent* event);
 
+/* Title Unicode */
+int ParallelCreateWideStringFromUTF8Win32(const char* source);
+
+void ParallelSetTitleWin32(ParallelWindow* window, const char* title);
+
 
 
 
