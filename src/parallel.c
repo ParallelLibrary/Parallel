@@ -1,8 +1,13 @@
 #include "parallel.h"
 
+#define PARALLEL_INIT_VIDEO 011
+
 void ParallelInit(UINT flags)
 {
+    if ((flags & PARALLEL_INIT_VIDEO))
+    {
 
+    }
 }
 
 ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int h, UINT flags)
@@ -20,7 +25,7 @@ ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int
 
     if (ParallelWin32(window))
     {
-
+     DestroyWindow(window->hwnd);
     };
 
     return window;

@@ -5,10 +5,11 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 int ParallelWin32(ParallelWindow* window)
 {
     DWORD style = CS_VREDRAW | CS_HREDRAW | CS_OWNDC;
+    WCHAR* widetitle;
     int x, y;
     int w, h;
 
-    ParallelAdjustWin32Rect(window, style, x, y, w, h, 0);
+    ParallelSetTitleWin32(window, window->title);
 
     WNDCLASSEXW wc = {};
     wc.cbSize = sizeof(WNDCLASSEXW);
@@ -24,21 +25,40 @@ int ParallelWin32(ParallelWindow* window)
 
     RegisterClassExW(&wc);
 
+    if (window)
+    {
+     RECT rect = {0, 0, window->w, window->h};
+     x = window->x + rect.left;
+     y = window->y + rect.top;
+     w = rect.right - rect.left;
+     h = rect.bottom - rect.top;
+     AdjustWindowRectEx(&rect, style, FALSE, 0);
+     SetWindowPos(window->hwnd, HWND_TOP, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, SWP_NOACTIVATE | SWP_NOZORDER);
+    }
+
     window->hwnd = CreateWindowExW(0,
                                    window->title,
                                    window->title,
                                    WS_OVERLAPPEDWINDOW,
-                                   CW_USEDEFAULT,
-                                   CW_USEDEFAULT,
-                                   window->w,
-                                   window->h,
+                                   x,
+                                   y,
+                                   w,
+                                   h,
                                    0,
                                    0,
                                    0,
                                    0);
+
     ShowWindow(window->hwnd, SW_SHOW);
 
     return 0;
+}
+
+void ParallelSetTitleWin32(ParallelWindow* window, const char* title)
+{
+    const wchar_t widetitle = ParallelCreateWideStringFromUTF8Win32(0);
+    SetWindowTextW(window->hwnd, widetitle);
+    free(widetitle);
 }
 
 void ParallelWin32Events(ParallelWindow* window)
@@ -51,21 +71,12 @@ void ParallelWin32Events(ParallelWindow* window)
     }
 }
 
-void ParallelAdjustWin32Rect(ParallelWindow* window, DWORD style, int x, int y, int w, int h, UINT flags)
-{
-    RECT rect = {0, 0, window->w, window->h};
-    x = window->x + rect.left;
-    y = window->y + rect.top;
-    window->w = rect.right - rect.left;
-    window->h = rect.bottom - rect.top;
-}
-
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
   switch (uMsg)
   {
+  case WM_CLOSE:
   case WM_DESTROY:
-      PostQuitMessage(0);
     break;
   default:
      return DefWindowProc(hwnd, uMsg, wParam, lParam);
