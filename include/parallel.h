@@ -8,6 +8,20 @@
 
 #include <windows.h>
 
+#define PARALLEL_INIT_VIDEO 0x10000
+#define PARALLEL_INIT_AUDIO 0x20000
+#define PARALLEL_INIT_EVERYTHING (PARALLEL_INIT_VIDEO | PARALLEL_INIT_AUDIO)
+
+#define PARALLEL_INIT_OPENGL
+#define PARALLEL_INIT_OPENGLES
+#define PARALLEL_INIT_DIRECTX
+#define PARALLEL_INIT_VULKAN
+#define PARALLEL_INIT_METAL
+
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
+
 typedef struct ParallelWindow ParallelWindow;
 
 typedef struct ParallelDevice ParallelDevice;
@@ -62,10 +76,14 @@ void ParallelInit(UINT flags);
 int ParallelPollEvent(ParallelEvent* event);
 
 /* Title Unicode */
-int ParallelCreateWideStringFromUTF8Win32(const char* source);
+int ParallelCreateWideStringFromUTF8Win32(WCHAR* source);
 
-void ParallelSetTitleWin32(ParallelWindow* window, const char* title);
+int ParallelSetTitleWin32(ParallelWindow* window, const char* title);
 
+/* Find a way to convert ANSI to UNICODE Custom or use MULTIBYTE(UTF-16) fucntion or this */
 
+#ifdef __cplusplus
+}
+#endif // __cplusplus
 
 
