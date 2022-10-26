@@ -1,7 +1,5 @@
 #include "parallel.h"
 
-#define PARALLEL_INIT_VIDEO
-
 void ParallelInit(UINT flags)
 {
     if ((flags & PARALLEL_INIT_VIDEO))

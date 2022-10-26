@@ -5,19 +5,17 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 int ParallelWin32(ParallelWindow* window)
 {
     DWORD style = CS_VREDRAW | CS_HREDRAW | CS_OWNDC;
-    WCHAR* widetitle;
+    const wchar_t* widetitle;
     int x, y;
     int w, h;
-
-    ParallelSetTitleWin32(window, window->title);
 
     WNDCLASSEXW wc = {};
     wc.cbSize = sizeof(WNDCLASSEXW);
     wc.style = CS_VREDRAW | CS_HREDRAW | CS_OWNDC;
     wc.lpfnWndProc = WndProc;
     wc.hInstance = window->hInstance;
-    wc.lpszClassName = window->title;
-    wc.lpszMenuName = window->title;
+    wc.lpszClassName = widetitle;
+    wc.lpszMenuName = widetitle;
     wc.hIcon = (HICON)LoadImageW(window->hInstance, L"icon.ico", IMAGE_ICON, 512, 512, LR_DEFAULTCOLOR);
     wc.hIconSm = (HICON)LoadImageW(window->hInstance, L"icon.ico", IMAGE_ICON, 32, 32, LR_DEFAULTCOLOR);
     wc.hCursor = LoadCursorW(window->hInstance, IDC_ARROW);
@@ -36,9 +34,11 @@ int ParallelWin32(ParallelWindow* window)
      SetWindowPos(window->hwnd, HWND_TOP, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, SWP_NOACTIVATE | SWP_NOZORDER);
     }
 
+    widetitle = ParallelSetTitleWin32(window, window->title);
+
     window->hwnd = CreateWindowExW(0,
-                                   window->title,
-                                   window->title,
+                                   widetitle,
+                                   widetitle,
                                    WS_OVERLAPPEDWINDOW,
                                    x,
                                    y,
@@ -54,11 +54,16 @@ int ParallelWin32(ParallelWindow* window)
     return 0;
 }
 
-void ParallelSetTitleWin32(ParallelWindow* window, const char* title)
+int ParallelSetTitleWin32(ParallelWindow* window, const char* title)
 {
-    const wchar_t widetitle = ParallelCreateWideStringFromUTF8Win32(0);
+    const wchar_t widetitle = ParallelCreateWideStringFromUTF8Win32(title);
     SetWindowTextW(window->hwnd, widetitle);
     free(widetitle);
+}
+
+int ParallelCreateWideStringFromUTF8Win32(WCHAR* source)
+{
+
 }
 
 void ParallelWin32Events(ParallelWindow* window)
