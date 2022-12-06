@@ -69,7 +69,6 @@ void ParallelInit(UINT flags);
 int ParallelPollEvent(ParallelEvent* event);
 
 /* Title Unicode */
-
 int ParallelSetTitleWin32(const char* title);
 
 #ifdef __cplusplus
