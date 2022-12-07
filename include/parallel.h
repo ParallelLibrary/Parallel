@@ -9,6 +9,7 @@
 #include <windows.h>
 #include <X11/Xlib.h>
 #include <wayland-client.h>
+#include <Cocoa/Cocoa.h>
 
 #define PARALLEL_INIT_VIDEO 0x10000
 #define PARALLEL_INIT_AUDIO 0x20000
