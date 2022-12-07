@@ -1,5 +1,4 @@
-#include <include/parallel.h>
-#include <X11/Xlib.h>
+#include "parallel.h"
 
 int parrallel_x11(ParallelWindow* window)
 {
