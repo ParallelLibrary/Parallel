@@ -1,4 +1,4 @@
-#include <native_window.h>
+#include "parallel.h"
 
 int parallel_android(ParallelWindow* window)
 {
