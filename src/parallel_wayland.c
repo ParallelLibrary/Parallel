@@ -1,4 +1,4 @@
-#include <wayland-client.h>
+#include "parallel.h"
 
 int parallel_wayland(ParallelWindow* window)
 {
