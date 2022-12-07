@@ -1,4 +1,4 @@
-#include <Cocoa/Cocoa.h>
+#include "parallel.h"
 
 int parallel_cocoa(ParallelWindow* window)
 {
