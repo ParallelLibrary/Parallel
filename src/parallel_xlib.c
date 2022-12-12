@@ -3,5 +3,6 @@
 int parrallel_x11(ParallelWindow* window)
 {
  Display* d;
- XCreateWindow(d);
+ Window* w;
+ w = XCreateWindow(d);
 }
