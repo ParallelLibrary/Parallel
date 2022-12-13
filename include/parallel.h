@@ -66,7 +66,7 @@ void ParallelEvents(ParallelWindow* window);
 /* Win32 Events */
 void ParallelWin32Events(ParallelWindow* window);
 
-/* Get the window x y coordinates */
+/* Get the window x y coordinates for Win32*/
 void ParallelAdjustWin32Rect(ParallelWindow* window, DWORD style, int x, int y, int w, int h, UINT flags);
 
 /* Win32 Main */
@@ -81,8 +81,11 @@ int ParallelPollEvent(ParallelEvent* event);
 /* Title Unicode */
 int ParallelSetTitleWin32(const char* title);
 
+/* Parallel Icon */
+int ParallelIcon(const char* icon);
+
+/* Parallel Cursor */
+int ParallelCursor(const char* cursor);
 #ifdef __cplusplus
 }
 #endif // __cplusplus
-
-
