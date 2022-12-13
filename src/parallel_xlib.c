@@ -4,6 +4,7 @@ int parallel_x11(ParallelWindow* window)
 {
  Display* d;
  Window* w;
- w = XCreateWindow(d);
+ int s;
+ w = XCreateWindow(d, XRootWindow(d, s),);
  d = XOpenDisplay(NULL);
 }
