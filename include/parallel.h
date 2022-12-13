@@ -63,7 +63,7 @@ int ParallelIcon(const char* icon);
 /* Parallel Cursor */
 int ParallelCursor(const char* cursor);
 
-/* Win32 window */
+/* Win32 Window */
 int ParallelWin32(ParallelWindow* window);
 
 /* Pump Events */
@@ -87,6 +87,18 @@ int ParallelPollEvent(ParallelEvent* event);
 /* Title Unicode */
 int ParallelSetTitleWin32(const char* title);
 
+/* X11 Window */
+int ParallelX11(ParallelWindow* window);
+
+/* Wayland Window */
+int ParallelWayland(ParallelWindow* window);
+
+/* Cocoa Window */
+int ParallelCocoa(ParallelWindow* window);
+
+/* ANativeWindow */
+
+int 
 #ifdef __cplusplus
 }
 #endif // __cplusplus
