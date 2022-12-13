@@ -57,6 +57,12 @@ UINT32 PARALLEL_QUITEVENT;
 /* Creates the Parallel window */
 ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int h, UINT flags);
 
+/* Parallel Icon */
+int ParallelIcon(const char* icon);
+
+/* Parallel Cursor */
+int ParallelCursor(const char* cursor);
+
 /* Win32 window */
 int ParallelWin32(ParallelWindow* window);
 
@@ -81,11 +87,6 @@ int ParallelPollEvent(ParallelEvent* event);
 /* Title Unicode */
 int ParallelSetTitleWin32(const char* title);
 
-/* Parallel Icon */
-int ParallelIcon(const char* icon);
-
-/* Parallel Cursor */
-int ParallelCursor(const char* cursor);
 #ifdef __cplusplus
 }
 #endif // __cplusplus
