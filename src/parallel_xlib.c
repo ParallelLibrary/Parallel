@@ -3,9 +3,11 @@
 int parallel_x11(ParallelWindow* window)
 {
  Display* d;
+ Screen* sc;
  Window* w;
  int s;
- s = XDefaultScreen(d);
- w = XCreateWindow(d, RootWindow(d, s), x, y, w, h, );
+ sc = DefaultScreenOfDisplay(d);
+ s = DefaultScreen(d);
+ w = XCreateWindow(d, RootWindow(d, s), x, y, w, h, 0, visual->depth, InputOutput, visual->visual, CWBackPixel | CWColorMap | CWCursor);
  d = XOpenDisplay(NULL);
 }
