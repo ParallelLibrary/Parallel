@@ -7,11 +7,17 @@ int parallel_x11(ParallelWindow* window)
  Window* w;
  XEvent e;
  XSetWindowAttributes a;
- XTextProperty p;
- p.value = (const char*)window->title;
- p.encoding = XA_STRING;
- p.format = 8;
- p.nitems = strlen(title);
+ XTextProperty tp;
+ tp.value = (const char*)window->title;
+ tp.encoding = XA_STRING;
+ tp.format = 8;
+ tp.nitems = strlen(window->title);
+
+ XTextProperty ip;
+ ip.value = (const char*)window->icon;
+ ip.encoding = XA_STRING;
+ ip.format = 8;
+ ip.nitems = strlen(window->icon);
 
  int s;
 
@@ -20,7 +26,10 @@ int parallel_x11(ParallelWindow* window)
  w = XCreateWindow(d, RootWindow(d, s), x, y, w, h, 0, visual->depth, InputOutput, visual->visual, CWBackPixel | CWColorMap | CWCursor, &a);
  d = XOpenDisplay(NULL);
 
- 
+ XSetWMName(d, w, &tp);
+ XSetWMIconName(d, w, &ip);
 
- XSetWMName(d, w, &p);
+ switch
+ {
+ }
 }
