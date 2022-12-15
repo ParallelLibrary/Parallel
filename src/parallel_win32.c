@@ -54,18 +54,6 @@ int ParallelWin32(ParallelWindow* window)
     return 0;
 }
 
-int ParallelSetTitleWin32(ParallelWindow* window, const char* title)
-{
-    const wchar_t widetitle = ParallelCreateWideStringFromUTF8Win32(title);
-    SetWindowTextW(window->hwnd, widetitle);
-    free(widetitle);
-}
-
-int ParallelCreateWideStringFromUTF8Win32(WCHAR* source)
-{
-
-}
-
 void ParallelWin32Events(ParallelWindow* window)
 {
     MSG msg = {};
