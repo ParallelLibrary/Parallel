@@ -8,6 +8,7 @@ int parallel_x11(ParallelWindow* window)
  XEvent e;
  XSetWindowAttributes a;
  int s;
+
  sc = DefaultScreenOfDisplay(d);
  s = DefaultScreen(d);
  w = XCreateWindow(d, RootWindow(d, s), x, y, w, h, 0, visual->depth, InputOutput, visual->visual, CWBackPixel | CWColorMap | CWCursor, &a);
