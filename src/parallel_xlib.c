@@ -1,6 +1,6 @@
 #include "parallel.h"
 
-int parallel_x11(ParallelWindow* window)
+int parallelx11(ParallelWindow* window)
 {
  Display* d;
  Screen* sc;
