@@ -3,10 +3,9 @@
 #endif
 
 #ifndef _WIN32
-#define _WIN32
+#include <windows.h>
 #endif
 
-#include <windows.h>
 #include <X11/Xlib.h>
 #include <wayland-client.h>
 #include <Cocoa/Cocoa.h>
@@ -63,6 +62,9 @@ int ParallelIcon(const char* icon);
 /* Parallel Cursor */
 int ParallelCursor(const char* cursor);
 
+/* Title Unicode */
+int ParallelSetTitle(const char* title);
+
 /* Win32 Window */
 int ParallelWin32(ParallelWindow* window);
 
@@ -84,9 +86,6 @@ void ParallelInit(UINT flags);
 /* Poll Events */
 int ParallelPollEvent(ParallelEvent* event);
 
-/* Title Unicode */
-int ParallelSetTitleWin32(const char* title);
-
 /* X11 Window */
 int ParallelX11(ParallelWindow* window);
 
@@ -97,7 +96,6 @@ int ParallelWayland(ParallelWindow* window);
 int ParallelCocoa(ParallelWindow* window);
 
 /* ANativeWindow */
-
 int 
 #ifdef __cplusplus
 }
