@@ -18,13 +18,12 @@ ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int
     window->h = h;
     window->x = x;
     window->y = y;
-
     window->flags = flags;
 
-    if (ParallelWin32(window))
+    if (w & h > 1)
     {
-     DestroyWindow(window->hwnd);
-    };
+     return NULL;
+    }
 
     return window;
 }
