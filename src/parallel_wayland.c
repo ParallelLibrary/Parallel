@@ -1,5 +1,6 @@
 #include "parallel.h"
 
-int parallel_wayland(ParallelWindow* window)
+int parallelwayland(ParallelWindow* window)
 {
+wl_display* d;
 }
