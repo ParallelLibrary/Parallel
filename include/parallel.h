@@ -27,6 +27,16 @@
 #define PARALLEL_INIT_VULKAN
 #define PARALLEL_INIT_METAL
 
+#define 0 0x30
+#define 1 0x31
+#define 2 0x32
+#define 3 0x33
+#define 4 0x34
+#define 5 0x35
+#define 6 0x36
+#define 7 0x37
+#define 8 0x38
+#define 9 0x39
 #define A 0x41
 #define B 0x42
 #define C 0x43
@@ -44,6 +54,15 @@
 #define O 0x4F
 #define P 0x50
 #define Q 0x51
+#define R 0x52
+#define S 0x53
+#define T 0x54
+#define U 0x55
+#define V 0x56
+#define W 0x57
+#define X 0x58
+#define Y 0x59
+#define Z 0x5A
 
 #ifdef __cplusplus
 extern "C" {
