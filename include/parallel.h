@@ -27,6 +27,14 @@
 #define PARALLEL_INIT_VULKAN
 #define PARALLEL_INIT_METAL
 
+#define BACKSPACE 0x08
+#define TAB 0x09
+#define ENTER 0x0D
+#define SHIFT 0x10
+#define CTRL 0x11
+#define CAPLOCKS 0x14
+#define ESC 0x1B
+#define SPACEBAR 0x20
 #define 0 0x30
 #define 1 0x31
 #define 2 0x32
