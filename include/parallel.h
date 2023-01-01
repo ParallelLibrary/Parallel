@@ -8,7 +8,15 @@
 #include <GL/wglext.h>
 #endif
 
+#ifndef _LINUX && _MACOS
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
+#endif
+
+#ifndef OPENGL
 #include <GL/gl.h>
+#include <GL/glcorearb.h>
+#endif
 
 #include <X11/Xlib.h>
 #include <wayland-client.h>
@@ -125,7 +133,7 @@ void ParallelEvents(ParallelWindow* window);
 void ParallelWin32Events(ParallelWindow* window);
 
 /* Get the window x y coordinates for Win32*/
-void ParallelAdjustWin32Rect(ParallelWindow* window, DWORD style, int x, int y, int w, int h, UINT flags);
+void ParallelAdjustRect(ParallelWindow* window, DWORD style, int x, int y, int w, int h, UINT flags);
 
 /* Win32 Main */
 int ParallelMain(void);
@@ -146,7 +154,13 @@ int ParallelWayland(ParallelWindow* window);
 int ParallelCocoa(ParallelWindow* window);
 
 /* ANativeWindow */
-int 
+int ParallelANativeWindow(ParallelWindow* window);
+
+int ParallelWGL(ParallelWindow* window);
+
+int ParallelEGL(ParallelWindow* window);
+
+
 #ifdef __cplusplus
 }
 #endif // __cplusplus
