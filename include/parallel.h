@@ -1,10 +1,14 @@
 #ifndef _UNICODE
-#define _UNICODE
+#include "unicodeforever.h"
 #endif
 
 #ifndef _WIN32
 #include <windows.h>
+#include <GL/wgl.h>
+#include <GL/wglext.h>
 #endif
+
+#include <GL/gl.h>
 
 #include <X11/Xlib.h>
 #include <wayland-client.h>
