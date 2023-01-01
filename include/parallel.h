@@ -2,26 +2,34 @@
 #include "unicodeforever.h"
 #endif
 
-#ifndef _WIN32
+#ifdef _WIN32 && __WIN32 && __WIN32__ 
 #include <windows.h>
 #include <GL/wgl.h>
 #include <GL/wglext.h>
 #endif
 
-#ifndef _LINUX && _MACOS
+#ifdef __linux__ && __unix__ && __APPLE__
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 #endif
 
-#ifndef _OPENGL
+#ifdef _OPENGL
 #include <GL/gl.h>
 #include <GL/glcorearb.h>
 #endif
 
+#ifdef __linux__ && __unix__ 
 #include <X11/Xlib.h>
 #include <wayland-client.h>
+#endif
+
+#ifdef __APPLE__
 #include <Cocoa/Cocoa.h>
+#endif
+
+#ifdef __ANDROID__
 #include <native_window.h>
+#endif
 
 #define PARALLEL_INIT_VIDEO 0x10000
 #define PARALLEL_INIT_AUDIO 0x20000
