@@ -13,7 +13,7 @@
 #include <EGL/eglext.h>
 #endif
 
-#ifndef OPENGL
+#ifndef _OPENGL
 #include <GL/gl.h>
 #include <GL/glcorearb.h>
 #endif
@@ -156,11 +156,14 @@ int ParallelCocoa(ParallelWindow* window);
 /* ANativeWindow */
 int ParallelANativeWindow(ParallelWindow* window);
 
+/* Windows */
 int ParallelWGL(ParallelWindow* window);
 
+/*Linux and MacOS */
 int ParallelEGL(ParallelWindow* window);
 
-
+/* Android */
+int ParallelGLES(ParallelWindow* window);
 #ifdef __cplusplus
 }
 #endif // __cplusplus
