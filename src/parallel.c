@@ -25,6 +25,24 @@ ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int
      return NULL;
     }
 
+    if (flags & PARALLEL_OPENGL)
+    {
+     
+    }
+
+    if (flags & PARALLEL_DIRECTX)
+    {
+
+    }
+
+    if (flags & PARALLEL_METAL)
+    {
+    }
+
+    if (flags & PARALLEL_VULKAN)
+    {
+    }
+
     return window;
 }
 
