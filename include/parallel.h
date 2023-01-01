@@ -13,7 +13,7 @@
 #include <EGL/eglext.h>
 #endif
 
-#ifdef _OPENGL
+#ifdef __OPENGL__
 #include <GL/gl.h>
 #include <GL/glcorearb.h>
 #endif
