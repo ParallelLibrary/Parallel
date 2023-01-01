@@ -27,7 +27,9 @@ ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int
 
     if (flags & PARALLEL_OPENGL)
     {
-     
+     void ParallelWGL(ParallelWindow* window);
+     void ParallelEGL(ParallelWindow* window);
+     void ParallelGLES(Parallelwindow* window);
     }
 
     if (flags & PARALLEL_DIRECTX)
