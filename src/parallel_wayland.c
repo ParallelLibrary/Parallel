@@ -7,10 +7,12 @@ wl_event_loop* e;
 wl_compositor* c;
 wl_region* r;
 wl_buffer* b;
-const wl_buffer_listener* listener;
+const wl_buffer_listener* bl;
 wl_surface* s;
 wl_listener* l;
 wl_registry* reg;
+wl_keyboard* k;
+const wl_keyboard_listener* kl;
 const wl_interface* i;
 
 d = wl_display_connect(NULL);
@@ -26,7 +28,9 @@ wl_surface_attach(&s, &b, window->width, window->height);
 
 wl_surface_destroy(&s);
 
-wl_buffer_add_listener(&b, &listener, NULL);
+wl_buffer_add_listener(&b, &bl, NULL);
+
+wl_keyboard_add_listener(&k, &kl, NULL);
 
 wl_pointer_set_cursor(&p, NULL, &s, 0, 0);
 
