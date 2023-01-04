@@ -20,6 +20,8 @@ if (window->width || window->height)
 
 s = wl_compositor_create_surface(c);
 
+wl_surface_attach(&s, &b, window->width, window->height);
+
 wl_pointer_set_cursor(&p, NULL, &s, 0, 0);
 
 wl_get_registery(display);
