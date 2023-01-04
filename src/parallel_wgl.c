@@ -4,8 +4,10 @@ HDC dc;
 int pf;
 HGLRC rc;
 
+bool
+
 ParallelWindow* window;
-GetHDC(window->hwnd);
+dc = GetHDC(window->hwnd);
 
 PIXELFORMATDESCRIPTOR pf = {
 sizeof(PIXELFORMATDESCRIPTOR),
@@ -25,3 +27,15 @@ PFD_MAIN_PLANE,
 0,
 0, 0, 0
 };
+
+ChoosePixelFormat();
+SetPixelFormat();
+
+wglMakeCurrent();
+
+wglChoosePixelFormatARB();
+
+const int* AttribList[] {
+};
+
+WGL_ARB_create_context();
