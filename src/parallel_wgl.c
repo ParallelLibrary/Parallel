@@ -9,7 +9,7 @@ bool
 ParallelWindow* window;
 dc = GetHDC(window->hwnd);
 
-PIXELFORMATDESCRIPTOR pf = {
+PIXELFORMATDESCRIPTOR pfd = {
 sizeof(PIXELFORMATDESCRIPTOR),
 1,
 PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER,
@@ -28,8 +28,8 @@ PFD_MAIN_PLANE,
 0, 0, 0
 };
 
-ChoosePixelFormat();
-SetPixelFormat();
+pf = ChoosePixelFormat(dc, &pfd);
+SetPixelFormat(dc, pf, &pfd);
 
 wglMakeCurrent();
 
