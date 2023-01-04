@@ -2,6 +2,7 @@
 
 HDC dc;
 int pf;
+UINT nf;
 HGLRC rc;
 
 bool
@@ -33,8 +34,6 @@ SetPixelFormat(dc, pf, &pfd);
 
 wglMakeCurrent();
 
-wglChoosePixelFormatARB();
-
 const int* AttribList[] {
 WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
 WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
@@ -46,6 +45,6 @@ WGL_STENCIL_BITS_ARB, 8,
 0
 };
 
-wglChoosePixelFormatARB();
+wglChoosePixelFormatARB(dc, AttribList, NULL, 1, &pf, &nf);
 
 WGL_ARB_create_context();
