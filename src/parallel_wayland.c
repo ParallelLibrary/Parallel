@@ -32,7 +32,11 @@ wl_buffer_add_listener(&b, &bl, NULL);
 
 wl_keyboard_add_listener(&k, &kl, NULL);
 
+wl_keyboard_destroy(&d);
+
 wl_pointer_set_cursor(&p, NULL, &s, 0, 0);
+
+wl_pointer_destroy(&d);
 
 wl_get_registery(display);
 
