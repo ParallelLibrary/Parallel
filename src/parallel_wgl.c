@@ -1,14 +1,14 @@
 #include "parallel.h"
 
-HDC dc;
+HDC dummydc;
 int pf;
 UINT nf;
-HGLRC rc;
+HGLRC dummyrc;
 
-bool
+bool 
 
 ParallelWindow* window;
-dc = GetHDC(window->hwnd);
+dummydc = GetHDC(window->hwnd);
 
 PIXELFORMATDESCRIPTOR pfd = {
 sizeof(PIXELFORMATDESCRIPTOR),
@@ -29,10 +29,10 @@ PFD_MAIN_PLANE,
 0, 0, 0
 };
 
-pf = ChoosePixelFormat(dc, &pfd);
-SetPixelFormat(dc, pf, &pfd);
+pf = ChoosePixelFormat(dummydc, &pfd);
+SetPixelFormat(dummydc, pf, &pfd);
 
-wglMakeCurrent();
+dummyrc = wglMakeCurrent(dummydc);
 
 const int* AttribList[] {
 WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
@@ -45,6 +45,4 @@ WGL_STENCIL_BITS_ARB, 8,
 0
 };
 
-wglChoosePixelFormatARB(dc, AttribList, NULL, 1, &pf, &nf);
-
-WGL_ARB_create_context();
+wglChoosePixelFormatARB(dummydc, AttribList, NULL, 1, &pf, &nf);
