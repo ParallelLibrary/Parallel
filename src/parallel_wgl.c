@@ -32,7 +32,11 @@ PFD_MAIN_PLANE,
 pf = ChoosePixelFormat(dummydc, &pfd);
 SetPixelFormat(dummydc, pf, &pfd);
 
-dummyrc = wglMakeCurrent(dummydc);
+dummyrc = wglCreateContext(dummydc);
+
+wglMakeCurrent(dummydc, dummyrc);
+
+wglMakeCurrent(NULL, NULL);
 
 const int* AttribList[] {
 WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
