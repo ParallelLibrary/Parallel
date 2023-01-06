@@ -1,13 +1,16 @@
 #include "parallel.h"
 
 HDC dummydc;
+HDC dc;
 int pf;
 UINT nf;
 HGLRC dummyrc;
+HGLRC rc;
 
 bool 
 
-ParallelWindow* window;
+int ParallelWGL(ParallelWindow* window)
+{
 dummydc = GetHDC(window->hwnd);
 
 PIXELFORMATDESCRIPTOR pfd = {
@@ -38,6 +41,8 @@ wglMakeCurrent(dummydc, dummyrc);
 
 wglMakeCurrent(NULL, NULL);
 
+dc = GetDC(window->hwnd);
+
 const int* AttribList[] {
 WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
 WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
@@ -50,3 +55,4 @@ WGL_STENCIL_BITS_ARB, 8,
 };
 
 wglChoosePixelFormatARB(dummydc, AttribList, NULL, 1, &pf, &nf);
+}
