@@ -8,7 +8,7 @@
 #include <GL/wglext.h>
 #endif
 
-#ifdef __linux__ && __unix__
+#ifdef __linux && __linux__ && __unix && __unix__
 #include <GL/glx.h>
 #include <GL/glxext.h>
 #include <X11/Xlib.h>
@@ -24,12 +24,21 @@
 #include <native_window.h>
 #endif
 
+#ifdef __DIRECTX__
+#include <d3d12.h>
+#include <d3d11.h>
+#endif
+
 #ifdef __OPENGL__
 #include <GL/gl.h>
 #include <GL/glext>
 #include <GL/glcorearb.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
+#endif
+
+#ifdef __VULKAN__
+#include <vulkan/vulkan.h>
 #endif
 
 #define PARALLEL_INIT_VIDEO 0x10000
