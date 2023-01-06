@@ -8,27 +8,28 @@
 #include <GL/wglext.h>
 #endif
 
-#ifdef __linux__ && __unix__ && __APPLE__
-#include <EGL/egl.h>
-#include <EGL/eglext.h>
-#endif
-
-#ifdef __OPENGL__
-#include <GL/gl.h>
-#include <GL/glcorearb.h>
-#endif
-
-#ifdef __linux__ && __unix__ 
+#ifdef __linux__ && __unix__
+#include <GL/glx.h>
+#include <GL/glxext.h>
 #include <X11/Xlib.h>
 #include <wayland-client.h>
 #endif
 
 #ifdef __APPLE__
 #include <Cocoa/Cocoa.h>
+#include <OpenGL/gl.h>
 #endif
 
 #ifdef __ANDROID__
 #include <native_window.h>
+#endif
+
+#ifdef __OPENGL__
+#include <GL/gl.h>
+#include <GL/glext>
+#include <GL/glcorearb.h>
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
 #endif
 
 #define PARALLEL_INIT_VIDEO 0x10000
