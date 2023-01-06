@@ -7,7 +7,7 @@ UINT nf;
 HGLRC dummyrc;
 HGLRC rc;
 
-bool 
+bool pfnglChoosePixelFormatARBPROC wglChoosePixelFormatARB = (pfnglChoosePixelFormatARBPROC) wglGetProcAddress("wglChoosePixelFormatARB);
 
 int ParallelWGL(ParallelWindow* window)
 {
