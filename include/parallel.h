@@ -145,6 +145,7 @@ struct ParallelWindow
 {
  HINSTANCE hInstance;
  HWND hwnd;
+ Window* w;
  const char* title;
  int w;
  int h;
@@ -207,6 +208,9 @@ int ParallelANativeWindow(ParallelWindow* window);
 
 /* Windows */
 int ParallelWGL(ParallelWindow* window);
+
+/* Linux */
+int ParallelGLX(ParallelWindow* window);
 
 /*Linux and MacOS */
 int ParallelEGL(ParallelWindow* window);
