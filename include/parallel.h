@@ -41,6 +41,10 @@
 #include <vulkan/vulkan.h>
 #endif
 
+#ifdef __METAL__
+#include <Metal/Metal.hpp
+#endif
+
 #define PARALLEL_INIT_VIDEO 0x10000
 #define PARALLEL_INIT_AUDIO 0x20000
 #define PARALLEL_INIT_EVERYTHING (PARALLEL_INIT_VIDEO | PARALLEL_INIT_AUDIO)
