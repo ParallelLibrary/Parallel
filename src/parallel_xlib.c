@@ -4,7 +4,6 @@ int parallelx11(ParallelWindow* window)
 {
  Display* d;
  Screen* sc;
- Window* w;
  XEvent e;
  XSetWindowAttributes a;
  XTextProperty tp;
@@ -23,7 +22,7 @@ int parallelx11(ParallelWindow* window)
 
  sc = DefaultScreenOfDisplay(d);
  s = DefaultScreen(d);
- w = XCreateWindow(d, RootWindow(d, s), x, y, w, h, 0, visual->depth, InputOutput, visual->visual, CWBackPixel | CWColorMap | CWCursor, &a);
+ window->w = XCreateWindow(d, RootWindow(d, s), x, y, w, h, 0, visual->depth, InputOutput, visual->visual, CWBackPixel | CWColorMap | CWCursor, &a);
  d = XOpenDisplay(NULL);
 
  XSetWMName(d, w, &tp);
