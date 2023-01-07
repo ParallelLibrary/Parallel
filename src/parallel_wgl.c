@@ -52,5 +52,7 @@ WGL_STENCIL_BITS_ARB, 8,
 0
 };
 
+DescribePixelFormat(dc, nf, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
+
 wglChoosePixelFormatARB(dummydc, AttribList, NULL, 1, &pf, &nf);
 }
