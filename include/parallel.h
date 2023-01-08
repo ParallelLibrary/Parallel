@@ -42,8 +42,12 @@
 #endif
 
 #ifdef __METAL__
-#include <Metal/Metal.hpp
+#include <Metal/Metal.hpp>
 #endif
+
+bool wglCreateContextAttribsARB_type(HDC hdc, HGLRC hSharedContext, const int* attribList); wglCreateContextAttribsARB_type* wglCreateContextAttribsARB;
+
+bool wglChoosePixelFormatARB_type(HDC hdc, const int* piAttribIList, const FLOAT pfAttribFList, UINT nMaxFormats, int *piFormats, UINT * nNumFormats); wglChoosePixelFormatARB_type* wglChoosePixelFormatARB;
 
 PFNGLBINDBUFFERARBPROC glBindBuffer = (PFNGLBINDBUFFERARBPROC*) wglGetProcAddress("glBindBuffer");
 PFNGLDELETEBUFFERSARBPROC glDeleteBuffers = (PFNGLDELETEBUFFERSARBPROC*) wglGetProcAddress("glDeleteBuffers");
