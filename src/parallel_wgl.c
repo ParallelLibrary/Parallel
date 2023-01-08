@@ -39,6 +39,8 @@ wglMakeCurrent(dummydc, dummyrc);
 
 wglMakeCurrent(NULL, NULL);
 
+wglDe
+
 dc = GetDC(window->hwnd);
 
 const int* AttribList[] {
@@ -64,4 +66,8 @@ WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
 WGL_CONTEXT_LAYER_PLANE, 0,
 WGL_CONTEXT_FLAGS_ARB, 0
 }
+
+rc = wglCreateContextAttribsARB(dc, 0, &gl_attribs);
+
+wglMakeCurrent(dc, rc);
 }
