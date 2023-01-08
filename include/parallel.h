@@ -149,6 +149,7 @@ struct ParallelWindow
 {
  HINSTANCE hInstance;
  HWND hwnd;
+ Display* d;
  Window* w;
  const char* title;
  int w;
