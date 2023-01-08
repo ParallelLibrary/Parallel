@@ -45,7 +45,13 @@ int fbcount;
 
 GLXFBConfig fbc = glxChooseFBConfig(window->d, DefaultScreen(window->d), glAttribsARB, &fbcount);
 
+int best_Fbc = -1, worst_Fbc = -1, best_num_samp = -1, worst_num_samp = 999;
+
 XVisualInfo* visual = glxGetVisualFrimFBConfig(window->d, bestFbc);
+
+XFree(vi);
+
+XFree(fbc);
 
 int context_attribs[] = {
 	GLX_CONTEXT_MAJOR_VERSION_ARB, 4,
@@ -54,13 +60,11 @@ int context_attribs[] = {
 	None
 };
 
-const char *glxExts = glXQueryExtensionsString( display,  screenId );
 GLXContext context = 0;
-if (!isExtensionSupported( glxExts, "GLX_ARB_create_context")) {
-	context = glXCreateNewContext( display, fbc, GLX_RGBA_TYPE, 0, True );
-}
-else {
-	context = glXCreateContextAttribsARB(window->d, fbc, 0, true, context_attribs);
-}
-XSync(window->display,False);
+
+context = glXCreateNewContext(window->d, fbc, GLX_RGBA_TYPE, 0, True);
+
+context = glXCreateContextAttribsARB(window->d, fbc, 0, true, context_attribs);
+
+XSync(window->d,False);
 }
