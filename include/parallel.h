@@ -35,6 +35,11 @@
 #include <GL/glcorearb.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
+#include <GLES3/gl32.h>
+#include <GLES3/gl3platform.h>
+#include <GLES2/gl2.h>
+#include <GLES2/gl2ext.h>
+#include <GLES2/gl2platform.h>
 #endif
 
 #ifdef __VULKAN__
