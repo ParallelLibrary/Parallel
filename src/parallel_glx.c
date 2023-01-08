@@ -47,7 +47,10 @@ GLXFBConfig fbc = glxChooseFBConfig(window->d, DefaultScreen(window->d), glAttri
 
 int best_Fbc = -1, worst_Fbc = -1, best_num_samp = -1, worst_num_samp = 999;
 
-XVisualInfo* visual = glxGetVisualFrimFBConfig(window->d, bestFbc);
+for(int i = 0; i < fbcount; i++) {
+XVisualInfo* visual = glxGetVisualFromFBConfig(window->d, bestFbc);
+
+GLXFBConfig best = fbc[bestFbc];
 
 XFree(vi);
 
