@@ -2,6 +2,15 @@
 
 int parallelegl(ParallelWindow* window)
 {
+EGLDisplay* d;
+EGLConfig* c;
+EGLSurface* s;
+EGLContext* con;
+
+wl_egl_window* w;
+
+
+
 int glAtttibs[] = {
 EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
 EGL_RED_SIZE, 8,
@@ -15,5 +24,6 @@ int contextAttribs[] = {
 EGL_CONTEXT_CLIENT_VERSION, 3,
 EGL_NONE
 }
+
 
 }
