@@ -52,7 +52,16 @@ WGL_STENCIL_BITS_ARB, 8,
 0
 };
 
-DescribePixelFormat(dc, nf, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
+wglChoosePixelFormatARB(dc, AttribList, NULL, 1, &pf, &nf);
 
-wglChoosePixelFormatARB(dummydc, AttribList, NULL, 1, &pf, &nf);
+DescribePixelFormat(dc, nf, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
+SetPixelFormat(dc, pf, &pfd);
+
+int gl_attribs[] = {
+WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
+WGL_CONTEXT_MINOR_VERSION_ARB, 6,
+WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+WGL_CONTEXT_LAYER_PLANE, 0,
+WGL_CONTEXT_FLAGS_ARB, 0
+}
 }
