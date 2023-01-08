@@ -65,9 +65,9 @@ int context_attribs[] = {
 
 GLXContext context = 0;
 
-context = glXCreateNewContext(window->d, fbc, GLX_RGBA_TYPE, 0, True);
+context = glXCreateContext(window->d, bestfbc);
 
 context = glXCreateContextAttribsARB(window->d, fbc, 0, true, context_attribs);
 
-XSync(window->d,False);
+glxMakeCurrent(window->d, window->w, context);
 }
