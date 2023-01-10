@@ -29,20 +29,23 @@ ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int
     {
      void ParallelWGL(ParallelWindow* window);
      void ParallelEGL(ParallelWindow* window);
-     void ParallelGLES(Parallelwindow* window);
+     void ParallelGLX(ParallelWindow* window);
     }
 
     if (flags & PARALLEL_DIRECTX)
     {
-
+     void ParallelDirectX11(ParallelWindow* window);
+     void ParallelDirectX12(ParallelWindow* window);
     }
 
     if (flags & PARALLEL_METAL)
     {
+     void ParallelMetal(ParallelWindow* window);
     }
 
     if (flags & PARALLEL_VULKAN)
     {
+     void ParallelVulkan(ParallelWindow* window);
     }
 
     return window;
