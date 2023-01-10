@@ -1,6 +1,6 @@
 #include "parallel.h"
 
-int parallelegl(ParallelWindow* window)
+int ParallelEGL(ParallelWindow* window)
 {
 EGLDisplay* d;
 EGLConfig* c;
