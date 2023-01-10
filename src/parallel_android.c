@@ -1,6 +1,6 @@
 #include "parallel.h"
 
-int parallelandroid(ParallelWindow* window)
+int ParallelAndroid(ParallelWindow* window)
 {
 enum ANativeWindowTransform {
 ANATIVEWINDOW_TRANSFORM_IDENTITY = 0x00,
@@ -32,4 +32,12 @@ ANativeWindowacquire(window->a);
 ANativeWindow_getBufferDataSpace(b);
 
 ANativeWindow_getFormat(AHARDWAREBUFFER_FORMAT_R8G8B8A8_UNORM);
+
+ANativeWindow_setBuffersGeometry(window->a, window->w, window->h, ANativeWindow_LegacyFormat);
+
+ANativeWindow_setBuffersTransform(window->a, ANativeWindow_Transform);
+
+ANativeWindow_setFrameRate(window->a, 60, ANativeWindow_FrameRateCompatibility);
+
+ANativeWindow_release(window->a);
 }
