@@ -1,6 +1,6 @@
 #include "parallel.h"
 
-int parallelwayland(ParallelWindow* window)
+int ParallelWayland(ParallelWindow* window)
 {
 wl_event_loop* e;
 wl_compositor* c;
