@@ -54,9 +54,8 @@ ParallelWindow* CreateParallelWindow(const char* title, int x, int y, int w, int
 int ParallelPollEvent(ParallelEvent* event)
 {
   if (event)
-  {
    PARALLEL_QUIT_EVENT:
-   event.type
+   free(event);
   }
 
    return 0;
