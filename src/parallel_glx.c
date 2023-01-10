@@ -2,7 +2,7 @@
 
 glXCreateContextAttribsARBProc glXCreateContextAttribsARB = (glXCreateContextAttribsARBProc*) glXGetProcAddressARB("glXCreateContextAttribsARB"); 
 
-int parallelglx(ParallelWindow* window)
+int ParallelGLX(ParallelWindow* window)
 {
 int glAtttibs[] 
 {
