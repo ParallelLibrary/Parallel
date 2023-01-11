@@ -55,7 +55,7 @@ int ParallelPollEvent(ParallelEvent* event)
 {
   if (event)
    PARALLEL_QUIT_EVENT:
-   free(event);
+   event - 1;
   }
 
    return 0;
