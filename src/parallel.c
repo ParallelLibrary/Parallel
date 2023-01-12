@@ -61,3 +61,6 @@ int ParallelPollEvent(ParallelEvent* event)
 
    return 0;
 }
+
+
+/* ParallelPollEvent queues event */
